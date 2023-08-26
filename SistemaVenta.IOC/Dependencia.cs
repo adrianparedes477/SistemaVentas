@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaVenta.DAL.DBContext;
+using SistemaVenta.DAL.Repositorio;
+using SistemaVenta.DAL.Repositorio.Contrato;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,11 @@ namespace SistemaVenta.IOC
             services.AddDbContext<DbventaContext>(options => {
                 options.UseSqlServer(configuration.GetConnectionString("CadenaSql"));
             });
+
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IVentaRepository, VentaRepository>();
         }
+
+        
     }
 }
