@@ -22,7 +22,7 @@ namespace SistemaVenta.BLL.Servicios
             _mapper = mapper;
         }
 
-        public async Task<List<RolDTO>> lista()
+        public async Task<List<RolDTO>> Lista()
         {
             try
             {
